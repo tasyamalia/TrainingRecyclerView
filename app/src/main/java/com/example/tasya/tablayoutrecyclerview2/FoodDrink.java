@@ -1,20 +1,15 @@
 package com.example.tasya.tablayoutrecyclerview2;
 
+import android.graphics.drawable.Drawable;
+
 public class FoodDrink {
-    private String title;
+    public String title;
+    public Drawable gambar;
 
-    public FoodDrink() {
-    }
 
-    public FoodDrink(String title) {
+    public FoodDrink(String title, Drawable gambar) {
         this.title = title;
+        this.gambar = gambar;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String name) {
-        this.title = name;
-    }
 }
