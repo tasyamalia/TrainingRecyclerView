@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="foods">
+        <item>Nasi Goreng</item>
+        <item>Bakso</item>
+        <item>Gado-Gado</item>
+        <item>Rendang</item>
+        <item>Sate</item>
+    </string-array>
+    <array name="food_picture">
+        <item>@drawable/nasigoreng</item>
+        <item>@drawable/bakso</item>
+        <item>@drawable/gadogado</item>
+        <item>@drawable/rendang</item>
+        <item>@drawable/sate</item>
+    </array>
+    <string-array name="drinks">
+        <item>Es Oyen</item>
+        <item>Es Dawet</item>
+        <item>Es Buah</item>
+        <item>Es Kepal Milo</item>
+        <item>Es Pisang Ijo</item>
+    </string-array>
+    <array name="drink_picture">
+        <item>@drawable/esoyen</item>
+        <item>@drawable/esdawet2</item>
+        <item>@drawable/esbuah</item>
+        <item>@drawable/eskepal</item>
+        <item>@drawable/espisangijo</item>
+    </array>
+</resources>

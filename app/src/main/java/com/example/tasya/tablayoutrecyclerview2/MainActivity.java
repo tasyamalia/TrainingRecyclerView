@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
 
     @Override
@@ -135,15 +139,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    Tab1 tab1 = new Tab1();
+                    return tab1;
+                case 1:
+                    Tab2 tab2 = new Tab2();
+                    return tab2;
+            }
+            return null;
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
     }
 }
