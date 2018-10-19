@@ -8,34 +8,32 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
+    ArrayList<FoodDrink> foodList;
 
-    private List<FoodDrink> drinkList;
-
-    public DrinkAdapter(ArrayList<FoodDrink> drinkList) {
-        this.drinkList = drinkList;
+    public FoodAdapter(ArrayList<FoodDrink> foodList) {
+        this.foodList = foodList;
     }
 
     @Override
-    public DrinkAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View t = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.drink_list_item, parent, false);
-        DrinkAdapter.ViewHolder ts = new DrinkAdapter.ViewHolder(t);
-        return ts;
+    public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View s = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.food_list_item, parent, false);
+        FoodAdapter.ViewHolder st = new FoodAdapter.ViewHolder(s);
+        return st;
     }
 
     @Override
-    public void onBindViewHolder(DrinkAdapter.ViewHolder holder, int position) {
-        final FoodDrink fooddrink = drinkList.get(position);
+    public void onBindViewHolder(FoodAdapter.ViewHolder holder, int position) {
+        final FoodDrink fooddrink = foodList.get(position);
         holder.title.setText(fooddrink.title);
         holder.gbr.setBackground(fooddrink.gambar);
     }
 
     @Override
     public int getItemCount() {
-        return drinkList.size();
+        return foodList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -50,5 +48,4 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
             cardview = itemView.findViewById(R.id.cardview);
         }
     }
-
 }
