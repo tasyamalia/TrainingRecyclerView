@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:id="@+id/cardview2"
         android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/imageView"
+
+        <TextView
+            android:id="@+id/foto"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
@@ -17,7 +18,7 @@
 
 
         <TextView
-                android:id="@+id/textViewJudul"
+            android:id="@+id/judul"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:gravity="center"

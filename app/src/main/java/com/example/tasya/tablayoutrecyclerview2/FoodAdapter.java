@@ -17,10 +17,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     }
 
     @Override
-    public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View s = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.food_list_item, parent, false);
-        FoodAdapter.ViewHolder st = new FoodAdapter.ViewHolder(s);
+        ViewHolder st = new ViewHolder(s);
         return st;
     }
 
@@ -33,8 +33,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return foodList.size();
+        if (foodList != null)
+            return foodList.size();
+        return 0;
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView gbr;
@@ -43,9 +46,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            gbr = itemView.findViewById(R.id.gbr);
-            title = itemView.findViewById(R.id.title);
-            cardview = itemView.findViewById(R.id.cardview);
+            gbr = itemView.findViewById(R.id.foto);
+            title = itemView.findViewById(R.id.judul);
+            cardview = itemView.findViewById(R.id.cardview2);
         }
     }
 }
