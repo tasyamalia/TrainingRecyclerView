@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Warung Makan</string>
+    <string name="app_name">PesanMakan.com</string>
     <string name="tab_text_1">Minuman</string>
     <string name="tab_text_2">Makanan</string>
     <string name="action_settings">Settings</string>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="foods">
-        <item>Nasi Goreng</item>
-        <item>Bakso</item>
-        <item>Gado-Gado</item>
-        <item>Rendang</item>
-        <item>Sate</item>
-        <item>Richeese</item>
-        <item>Mcdonald</item>
-        <item>KFC</item>
-        <item>Jank Jank</item>
+        <item>Nasi Goreng Pak Min</item>
+        <item>Bakso Solo</item>
+        <item>Gado-Gado Hasanah</item>
+        <item>Rendang Padang</item>
+        <item>Sate Ayam Ponorogo</item>
+        <item>Richeese Factory</item>
+        <item>Mcdonald Malang</item>
+        <item>KFC Sulfat</item>
+        <item>Jank Jank Wings </item>
     </string-array>
     <array name="food_picture">
         <item>@drawable/nasigoreng</item>
@@ -45,15 +45,15 @@
         <item>58 Menit</item>
     </string-array>
     <string-array name="drinks">
-        <item>Es Oyen</item>
-        <item>Es Dawet</item>
-        <item>Es Buah</item>
+        <item>Es Oyen bala-bala</item>
+        <item>Es Dawet Alami</item>
+        <item>Es Buah Segar</item>
         <item>Es Kepal Milo</item>
-        <item>Es Pisang Ijo</item>
-        <item>Cappucino Cincau</item>
-        <item>Coklat Klasik</item>
-        <item>Es Teh</item>
-        <item>Thai Tea</item>
+        <item>Es Pisang Ijo Sulfat</item>
+        <item>Cappucino Cincau </item>
+        <item>Coklat Klasik Sawojajar</item>
+        <item>Es Teh Bu Anik</item>
+        <item>Thai Tea Tuk Tuk</item>
     </string-array>
     <array name="drink_picture">
         <item>@drawable/esoyen</item>
