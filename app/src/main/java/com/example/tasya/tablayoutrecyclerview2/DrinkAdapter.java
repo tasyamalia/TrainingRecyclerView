@@ -35,6 +35,8 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
         final FoodDrink fooddrink = drinkList.get(position);
         holder.title.setText(fooddrink.title);
         holder.gbr.setBackground(fooddrink.gambar);
+        holder.descr.setText(fooddrink.desc);
+        holder.time.setText(fooddrink.times);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,8 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView gbr;
         TextView title;
+        TextView descr;
+        TextView time;
         CardView cardview;
 
         public ViewHolder(View itemView) {
@@ -59,6 +63,8 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
             gbr = itemView.findViewById(R.id.gbr);
             title = itemView.findViewById(R.id.title);
             cardview = itemView.findViewById(R.id.cardview);
+            descr = itemView.findViewById(R.id.desc);
+            time = itemView.findViewById(R.id.times);
         }
     }
 

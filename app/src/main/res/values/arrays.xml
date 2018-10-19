@@ -6,6 +6,10 @@
         <item>Gado-Gado</item>
         <item>Rendang</item>
         <item>Sate</item>
+        <item>Richeese</item>
+        <item>Mcdonald</item>
+        <item>KFC</item>
+        <item>Jank Jank</item>
     </string-array>
     <array name="food_picture">
         <item>@drawable/nasigoreng</item>
@@ -13,13 +17,43 @@
         <item>@drawable/gadogado</item>
         <item>@drawable/rendang</item>
         <item>@drawable/sate</item>
+        <item>@drawable/ricis</item>
+        <item>@drawable/mcd</item>
+        <item>@drawable/kfc</item>
+        <item>@drawable/jank</item>
     </array>
+    <string-array name="food_desc">
+        <item>Indonesian</item>
+        <item>Indonesian</item>
+        <item>Indonesian</item>
+        <item>Indonesian</item>
+        <item>Indonesian</item>
+        <item>Fast Food</item>
+        <item>Fast Food</item>
+        <item>Fast Food</item>
+        <item>Fast Food</item>
+    </string-array>
+    <string-array name="food_time">
+        <item>55 Menit</item>
+        <item>60 Menit</item>
+        <item>48 Menit</item>
+        <item>54 Menit</item>
+        <item>58 Menit</item>
+        <item>60 Menit</item>
+        <item>48 Menit</item>
+        <item>54 Menit</item>
+        <item>58 Menit</item>
+    </string-array>
     <string-array name="drinks">
         <item>Es Oyen</item>
         <item>Es Dawet</item>
         <item>Es Buah</item>
         <item>Es Kepal Milo</item>
         <item>Es Pisang Ijo</item>
+        <item>Cappucino Cincau</item>
+        <item>Coklat Klasik</item>
+        <item>Es Teh</item>
+        <item>Thai Tea</item>
     </string-array>
     <array name="drink_picture">
         <item>@drawable/esoyen</item>
@@ -27,5 +61,31 @@
         <item>@drawable/esbuah</item>
         <item>@drawable/eskepal</item>
         <item>@drawable/espisangijo</item>
+        <item>@drawable/capcin</item>
+        <item>@drawable/ck</item>
+        <item>@drawable/esteh</item>
+        <item>@drawable/thaitea</item>
     </array>
+    <string-array name="drink_desc">
+        <item>Dessert, Indonesian</item>
+        <item>Dessert, Indonesian</item>
+        <item>Dessert, Indonesian</item>
+        <item>Dessert, Indonesian</item>
+        <item>Dessert, Indonesian</item>
+        <item>Beverages, Indonesian</item>
+        <item>Beverages, Indonesian</item>
+        <item>Beverages, Indonesian</item>
+        <item>Baverages, Indonesian</item>
+    </string-array>
+    <string-array name="drink_time">
+        <item>45 Menit</item>
+        <item>48 Menit</item>
+        <item>55 Menit</item>
+        <item>44 Menit</item>
+        <item>49 Menit</item>
+        <item>48 Menit</item>
+        <item>55 Menit</item>
+        <item>44 Menit</item>
+        <item>49 Menit</item>
+    </string-array>
 </resources>

@@ -9,8 +9,8 @@
     android:paddingRight="8dp">
 
     <android.support.v7.widget.CardView
-        android:layout_width="220dp"
         android:id="@+id/cardview2"
+        android:layout_width="220dp"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -30,8 +30,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_alignLeft="@+id/foto"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="160dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black"
+                tools:text="Judul" />
+
+            <TextView
+                android:id="@+id/descf"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_alignLeft="@+id/foto"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="200dp"
+                android:textColor="@android:color/black"
+                tools:text="Judul" />
+
+            <TextView
+                android:id="@+id/timesf"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignLeft="@+id/foto"
+                android:layout_marginTop="230dp"
                 android:textColor="@android:color/black"
                 tools:text="Judul" />
         </RelativeLayout>

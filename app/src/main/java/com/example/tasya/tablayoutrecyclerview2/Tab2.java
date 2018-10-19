@@ -42,6 +42,8 @@ public class Tab2 extends Fragment {
     private void fillData() {
         Resources resources = getResources();
         String[] arJudul = resources.getStringArray(R.array.foods);
+        String[] arDesc = resources.getStringArray(R.array.food_desc);
+        String[] arTimes = resources.getStringArray(R.array.food_time);
         TypedArray a = resources.obtainTypedArray(R.array.food_picture);
         Drawable[] arFoto = new Drawable[a.length()];
         for (int i = 0; i < arFoto.length; i++) {
@@ -49,7 +51,7 @@ public class Tab2 extends Fragment {
         }
         a.recycle();
         for (int i = 0; i < arJudul.length; i++) {
-            mList.add(new FoodDrink(arJudul[i], arFoto[i]));
+            mList.add(new FoodDrink(arJudul[i], arFoto[i], arDesc[i], arTimes[i]));
         }
         mAdapter.notifyDataSetChanged();
     }
