@@ -34,7 +34,7 @@ public class Tab1 extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        vAdapter = new DrinkAdapter(mList);
+        vAdapter = new DrinkAdapter(mList, getContext());
         recyclerView.setAdapter(vAdapter);
         fillData();
 

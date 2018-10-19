@@ -32,7 +32,7 @@ public class Tab2 extends Fragment {
         recyclerView = view2.findViewById(R.id.recyclerview2);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new FoodAdapter(mList);
+        mAdapter = new FoodAdapter(mList, getContext());
         recyclerView.setAdapter(mAdapter);
         fillData();
 
