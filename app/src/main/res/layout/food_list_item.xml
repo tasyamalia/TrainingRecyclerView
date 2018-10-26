@@ -1,58 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="220dp"
-    android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="20dp"
-    android:orientation="horizontal"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="10dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardview2"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop" />
 
-        <RelativeLayout
-            android:layout_width="220dp"
-            android:layout_height="wrap_content">
-
-            <TextView
+    <ImageView
                 android:id="@+id/foto"
-                android:layout_width="180dp"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/sate" />
+        android:layout_marginRight="2dp"
+        android:background="#424242" />
 
             <TextView
                 android:id="@+id/judul"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_alignLeft="@+id/foto"
-                android:layout_marginTop="160dp"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 tools:text="Judul" />
 
-            <TextView
-                android:id="@+id/descf"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_alignLeft="@+id/foto"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="200dp"
-                android:textColor="@android:color/black"
-                tools:text="Judul" />
 
-            <TextView
-                android:id="@+id/timesf"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignLeft="@+id/foto"
-                android:layout_marginTop="230dp"
-                android:textColor="@android:color/black"
-                tools:text="Judul" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+</RelativeLayout>

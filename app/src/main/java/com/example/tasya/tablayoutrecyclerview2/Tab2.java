@@ -1,8 +1,5 @@
 package com.example.tasya.tablayoutrecyclerview2;
 
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,13 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tasya.tablayoutrecyclerview2.model.LatestItems;
+import com.example.tasya.tablayoutrecyclerview2.model.MealsItems;
+import com.example.tasya.tablayoutrecyclerview2.rest.ApiClient;
+import com.example.tasya.tablayoutrecyclerview2.rest.LatestInterface;
+
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Tab2 extends Fragment {
 
     ArrayList<FoodDrink> mList = new ArrayList<>();
-    FoodAdapter mAdapter;
+    DrinkAdapter vAdapter;
     RecyclerView recyclerView;
+
+    LatestInterface latestInterface;
+    Call<LatestItems> latestItemCall;
+    MealsItems[] mealsItem;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,30 +41,39 @@ public class Tab2 extends Fragment {
         // Inflate the layout for this fragment
         View view2 = inflater.inflate(R.layout.tab2, container, false);
 
-        recyclerView = view2.findViewById(R.id.recyclerview2);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new FoodAdapter(mList, getContext());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView = view2.findViewById(R.id.recyclerView);
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        //recyclerView.setLayoutManager(layoutManager);
+        //mAdapter = new FoodAdapter(mList, getContext());
+        //recyclerView.setAdapter(mAdapter);
         fillData();
 
         return view2;
     }
 
     private void fillData() {
-        Resources resources = getResources();
-        String[] arJudul = resources.getStringArray(R.array.foods);
-        String[] arDesc = resources.getStringArray(R.array.food_desc);
-        String[] arTimes = resources.getStringArray(R.array.food_time);
-        TypedArray a = resources.obtainTypedArray(R.array.food_picture);
-        Drawable[] arFoto = new Drawable[a.length()];
-        for (int i = 0; i < arFoto.length; i++) {
-            arFoto[i] = a.getDrawable(i);
-        }
-        a.recycle();
-        for (int i = 0; i < arJudul.length; i++) {
-            mList.add(new FoodDrink(arJudul[i], arFoto[i], arDesc[i], arTimes[i]));
-        }
-        mAdapter.notifyDataSetChanged();
+        latestInterface = ApiClient.getClient().create(LatestInterface.class);
+        latestItemCall = latestInterface.getData();
+
+        latestItemCall.enqueue(new Callback<LatestItems>() {
+            @Override
+            public void onResponse(Call<LatestItems> call, Response<LatestItems> response) {
+                mealsItem = response.body().getMealsItems();
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                vAdapter = new DrinkAdapter(mealsItem, getContext());
+                recyclerView.setAdapter(vAdapter);
+
+                vAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<LatestItems> call, Throwable t) {
+
+            }
+        });
+
+
     }
 }

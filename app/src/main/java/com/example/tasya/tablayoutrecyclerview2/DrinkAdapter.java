@@ -6,19 +6,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.tasya.tablayoutrecyclerview2.model.MealsItems;
+import com.squareup.picasso.Picasso;
 
 public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> {
 
-    private List<FoodDrink> drinkList;
+    MealsItems[] mealsItems;
     Context konteks;
 
-    public DrinkAdapter(ArrayList<FoodDrink> drinkList, Context konteks) {
-        this.drinkList = drinkList;
+    public DrinkAdapter(MealsItems[] mealsItems, Context konteks) {
+        this.mealsItems = mealsItems;
         this.konteks = konteks;
     }
 
@@ -31,31 +32,33 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(DrinkAdapter.ViewHolder holder, int position) {
-        final FoodDrink fooddrink = drinkList.get(position);
-        holder.title.setText(fooddrink.title);
-        holder.gbr.setBackground(fooddrink.gambar);
-        holder.descr.setText(fooddrink.desc);
-        holder.time.setText(fooddrink.times);
+    public void onBindViewHolder(DrinkAdapter.ViewHolder holder, final int position) {
+        holder.title.setText(mealsItems[position].getStrMeal());
+        //holder.gbr.setBackground(fooddrink.gambar);
+        holder.category.setText(mealsItems[position].getStrCategory());
+        holder.area.setText(mealsItems[position].getStrArea());
+        Picasso.get().load(mealsItems[position].getStrMealThumb()).into(holder.gbr);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vw) {
-                Toast.makeText(konteks, "" + fooddrink.title, Toast.LENGTH_SHORT).show();
+                Toast.makeText(konteks, "Instructions " + mealsItems[position].getStrInstruction(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return drinkList.size();
+        if (mealsItems != null)
+            return mealsItems.length;
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView gbr;
+        ImageView gbr;
         TextView title;
-        TextView descr;
-        TextView time;
+        TextView category;
+        TextView area;
         CardView cardview;
 
         public ViewHolder(View itemView) {
@@ -63,8 +66,8 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
             gbr = itemView.findViewById(R.id.gbr);
             title = itemView.findViewById(R.id.title);
             cardview = itemView.findViewById(R.id.cardview);
-            descr = itemView.findViewById(R.id.desc);
-            time = itemView.findViewById(R.id.times);
+            category = itemView.findViewById(R.id.categories);
+            area = itemView.findViewById(R.id.areas);
         }
     }
 
