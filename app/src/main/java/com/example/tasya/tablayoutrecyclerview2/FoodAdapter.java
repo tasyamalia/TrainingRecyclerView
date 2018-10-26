@@ -39,7 +39,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.imageV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vw) {
-                Toast.makeText(konteks, "You click " + categoriItems[position].getStrCategory(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(konteks, "" + categoriItems[position].getStrCategory(), Toast.LENGTH_SHORT).show();
             }
         });
 

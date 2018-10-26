@@ -42,7 +42,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vw) {
-                Toast.makeText(konteks, "Instructions " + mealsItems[position].getStrInstruction(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(konteks, "" + mealsItems[position].getStrMeal(), Toast.LENGTH_SHORT).show();
             }
         });
     }
