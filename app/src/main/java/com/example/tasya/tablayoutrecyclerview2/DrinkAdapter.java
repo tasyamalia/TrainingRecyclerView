@@ -10,13 +10,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tasya.tablayoutrecyclerview2.model.FavoriteModel;
 import com.example.tasya.tablayoutrecyclerview2.model.MealsItems;
 import com.squareup.picasso.Picasso;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> {
 
     MealsItems[] mealsItems;
     Context konteks;
+    Realm realm;
+    RealmHelper realmHelper;
+    FavoriteModel favoriteModel;
 
     public DrinkAdapter(MealsItems[] mealsItems, Context konteks) {
         this.mealsItems = mealsItems;
@@ -39,10 +46,23 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
         holder.area.setText(mealsItems[position].getStrArea());
         Picasso.get().load(mealsItems[position].getStrMealThumb()).into(holder.gbr);
 
-        holder.cardview.setOnClickListener(new View.OnClickListener() {
+        //Set up Realm
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
+        realmHelper = new RealmHelper(realm);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vw) {
-                Toast.makeText(konteks, "" + mealsItems[position].getStrMeal(), Toast.LENGTH_SHORT).show();
+                favoriteModel = new FavoriteModel();
+                favoriteModel.setNama(mealsItems[position].getStrMeal());
+                favoriteModel.setKategori(mealsItems[position].getStrCategory());
+                favoriteModel.setGambar(mealsItems[position].getStrMealThumb());
+                favoriteModel.setJenis(mealsItems[position].getStrArea());
+
+                realmHelper = new RealmHelper(realm);
+                realmHelper.save(favoriteModel);
+
+                Toast.makeText(konteks, "data tambah", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -63,11 +83,11 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            gbr = itemView.findViewById(R.id.gbr);
-            title = itemView.findViewById(R.id.title);
+            gbr = itemView.findViewById(R.id.gbr2);
+            title = itemView.findViewById(R.id.title2);
             cardview = itemView.findViewById(R.id.cardview);
-            category = itemView.findViewById(R.id.categories);
-            area = itemView.findViewById(R.id.areas);
+            category = itemView.findViewById(R.id.categories2);
+            area = itemView.findViewById(R.id.areas2);
         }
     }
 

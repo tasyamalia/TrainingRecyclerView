@@ -8,27 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tasya.tablayoutrecyclerview2.model.FavoriteModel;
 import com.example.tasya.tablayoutrecyclerview2.model.LatestItems;
 import com.example.tasya.tablayoutrecyclerview2.model.MealsItems;
-import com.example.tasya.tablayoutrecyclerview2.rest.ApiClient;
 import com.example.tasya.tablayoutrecyclerview2.rest.LatestInterface;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Tab2 extends Fragment {
 
     ArrayList<FoodDrink> mList = new ArrayList<>();
-    DrinkAdapter vAdapter;
+    AdapterFavorite vAdapter;
     RecyclerView recyclerView;
 
     LatestInterface latestInterface;
     Call<LatestItems> latestItemCall;
     MealsItems[] mealsItem;
-
+    Realm realm;
+    RealmHelper realmHelper;
+    List<FavoriteModel> favoriteModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,38 +45,21 @@ public class Tab2 extends Fragment {
         View view2 = inflater.inflate(R.layout.tab2, container, false);
 
         recyclerView = view2.findViewById(R.id.recyclerView);
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        //recyclerView.setLayoutManager(layoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         //mAdapter = new FoodAdapter(mList, getContext());
         //recyclerView.setAdapter(mAdapter);
-        fillData();
 
+        //Set up Realm
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
+        realmHelper = new RealmHelper(realm);
+
+        favoriteModel = realmHelper.getFavorite();
+        vAdapter = new AdapterFavorite(getActivity(), favoriteModel);
+        recyclerView.setAdapter(vAdapter);
         return view2;
     }
 
-    private void fillData() {
-        latestInterface = ApiClient.getClient().create(LatestInterface.class);
-        latestItemCall = latestInterface.getData();
 
-        latestItemCall.enqueue(new Callback<LatestItems>() {
-            @Override
-            public void onResponse(Call<LatestItems> call, Response<LatestItems> response) {
-                mealsItem = response.body().getMealsItems();
-
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                recyclerView.setLayoutManager(layoutManager);
-                vAdapter = new DrinkAdapter(mealsItem, getContext());
-                recyclerView.setAdapter(vAdapter);
-
-                vAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<LatestItems> call, Throwable t) {
-
-            }
-        });
-
-
-    }
 }
