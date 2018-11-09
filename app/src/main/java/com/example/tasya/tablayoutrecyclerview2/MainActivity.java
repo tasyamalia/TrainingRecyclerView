@@ -135,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     Tab2 tab2 = new Tab2();
                     return tab2;
+                case 2:
+                    FragmentMap tab3 = new FragmentMap();
+                    return tab3;
             }
             return null;
         }
@@ -142,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
     }
 }

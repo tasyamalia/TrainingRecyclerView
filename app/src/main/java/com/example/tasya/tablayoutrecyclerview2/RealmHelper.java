@@ -83,4 +83,31 @@ public class RealmHelper {
         });
     }
 
+    //save data Add
+    public void save_add(final Add add) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                if (realm != null) {
+                    Log.e("Created", "DB was created");
+                    Number currentIdNum = realm.where(Add.class).max("id");
+                    int nextId;
+                    if (currentIdNum == null) {
+                        nextId = 1;
+                    } else {
+                        nextId = currentIdNum.intValue() + 1;
+                    }
+                    add.setId(nextId);
+                    realm.copyToRealm(add);
+                } else {
+                    Log.e("", "DB not Found");
+                }
+            }
+        });
+    }
+
+    public List<Add> getAllAdd() {
+        RealmResults<Add> results = realm.where(Add.class).findAll();
+        return results;
+    }
 }
