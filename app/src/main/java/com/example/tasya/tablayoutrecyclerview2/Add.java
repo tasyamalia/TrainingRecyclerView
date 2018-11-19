@@ -9,6 +9,15 @@ public class Add extends RealmObject {
     private String nama;
     private Double latitude;
     private Double longitude;
+    private String image_lok;
+
+    public String getImage_lok() {
+        return image_lok;
+    }
+
+    public void setImage_lok(String image_lok) {
+        this.image_lok = image_lok;
+    }
 
     public int getId() {
         return id;

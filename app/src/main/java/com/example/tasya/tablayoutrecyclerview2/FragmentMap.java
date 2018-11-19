@@ -112,19 +112,19 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback, Locatio
             }
         });
 
-        Button btnReCenter = view.findViewById(R.id.recenter);
-        btnReCenter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                m.remove();
-                LatLng area = new LatLng(global_latitude, global_longitude);
-                //mMap.addMarker(new MarkerOptions().position(area).title("Marker in Sydney")).setIcon(BitmapDescriptorFactory.fromBitmap(bmp));
-                MarkerOptions marker = new MarkerOptions().title("We are here").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).position(area);
-                m = mMap.addMarker(marker);
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(area));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
-            }
-        });
+//        Button btnReCenter = view.findViewById(R.id.recenter);
+//        btnReCenter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                m.remove();
+//                LatLng area = new LatLng(global_latitude, global_longitude);
+//                //mMap.addMarker(new MarkerOptions().position(area).title("Marker in Sydney")).setIcon(BitmapDescriptorFactory.fromBitmap(bmp));
+//                MarkerOptions marker = new MarkerOptions().title("We are here").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).position(area);
+//                m = mMap.addMarker(marker);
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(area));
+//                mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
+//            }
+//        });
 
         Button btnAdd = view.findViewById(R.id.add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -227,7 +227,17 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback, Locatio
             }
         });
         //mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        this.mMap.setMyLocationEnabled(true);
         mMap.setBuildingsEnabled(true);
         mMap.setIndoorEnabled(true);
         mMap.setTrafficEnabled(true);
@@ -268,15 +278,15 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback, Locatio
 
     private void load_point() {
 
-        List<Add> warungs = realmHelper.getAllAdd();
-        for (Add warung : warungs) {
+        List<Add> adds = realmHelper.getAllAdd();
+        for (Add add : adds) {
             InfoWindowData info = new InfoWindowData();
-            info.setImage("ic_action_name");
-            info.setFood("Food : all types of restaurants available");
-            info.setTransport("Reach the site by bus, car and train.");
+            info.setImage(add.getImage_lok());
+            info.setFood("" + add.getLatitude());
+            info.setTransport("" + add.getLongitude());
 
-            MarkerOptions marker_warung = new MarkerOptions().title(warung.getNama()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).position(new LatLng(warung.getLatitude(), warung.getLongitude()));
-            Marker mw = mMap.addMarker(marker_warung);
+            MarkerOptions marker_add = new MarkerOptions().title(add.getNama()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).position(new LatLng(add.getLatitude(), add.getLongitude()));
+            Marker mw = mMap.addMarker(marker_add);
             mw.setTag(info);
 
         }

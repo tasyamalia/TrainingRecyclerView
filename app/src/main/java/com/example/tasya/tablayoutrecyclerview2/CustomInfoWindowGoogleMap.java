@@ -2,6 +2,7 @@ package com.example.tasya.tablayoutrecyclerview2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,10 +39,10 @@ public class CustomInfoWindowGoogleMap implements GoogleMap.InfoWindowAdapter {
 
         InfoWindowData infoWindowData = (InfoWindowData) marker.getTag();
 
-        int imageId = context.getResources().getIdentifier(infoWindowData.getImage().toLowerCase(),
-                "drawable", context.getPackageName());
-        img.setImageResource(imageId);
-
+        //int imageId = context.getResources().getIdentifier(infoWindowData.getImage().toLowerCase(),
+//                "drawable", context.getPackageName());
+//        img.setImageResource(imageId);
+        img.setImageURI(Uri.parse(infoWindowData.getImage()));
         food_tv.setText(infoWindowData.getFood());
         transport_tv.setText(infoWindowData.getTransport());
 

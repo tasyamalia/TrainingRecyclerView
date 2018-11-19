@@ -11,6 +11,16 @@ public class FavoriteModel extends RealmObject {
     private String kategori;
     private String jenis;
 
+    private String instruction;
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
     public Integer getId() {
         return id;
     }

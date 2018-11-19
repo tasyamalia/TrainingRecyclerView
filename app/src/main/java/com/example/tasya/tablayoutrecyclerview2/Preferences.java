@@ -8,7 +8,6 @@ public class Preferences {
     static final String NAMA = "Nama";
     static final String EMAIL = "Email";
     static final String ALAMAT = "Alamat";
-    static final String FILLED = "Filled";
 
     /**
      * Pendlakarasian Shared Preferences yang berdasarkan paramater context

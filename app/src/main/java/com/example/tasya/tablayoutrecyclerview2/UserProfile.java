@@ -12,6 +12,8 @@ public class UserProfile extends AppCompatActivity {
     EditText nama, email, alamat;
     TextView nama2, email2, alamat2;
 
+    String namaS, emailS, alamatS;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
@@ -26,6 +28,13 @@ public class UserProfile extends AppCompatActivity {
         alamat2 = findViewById(R.id.tvAlamat2);
         Button show_data = findViewById(R.id.btnShow);
 
+        namaS = Preferences.getNama(getApplicationContext());
+        nama.setText(namaS);
+        emailS = Preferences.getEmail((getApplicationContext()));
+        email.setText(emailS);
+        alamatS = Preferences.getAlamat((getApplicationContext()));
+        alamat.setText(alamatS);
+
         //checkFilled();
         save_data.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,18 +48,15 @@ public class UserProfile extends AppCompatActivity {
                     Preferences.setEmail(getApplicationContext(), email.getText().toString());
                     Preferences.setAlamat(getApplicationContext(), alamat.getText().toString());
                     //Preferences.setFIlled(getApplicationContext(),true);
-                    nama.setText("");
-                    email.setText("");
-                    alamat.setText("");
                 }
                 l.setVisibility(View.GONE);
                 ll.setVisibility(View.VISIBLE);
-                String nama = Preferences.getNama(getApplicationContext());
-                nama2.setText(nama);
-                String email = Preferences.getEmail((getApplicationContext()));
-                email2.setText(email);
-                String alamat = Preferences.getAlamat((getApplicationContext()));
-                alamat2.setText(alamat);
+                namaS = Preferences.getNama(getApplicationContext());
+                nama2.setText(namaS);
+                emailS = Preferences.getEmail((getApplicationContext()));
+                email2.setText(emailS);
+                alamatS = Preferences.getAlamat((getApplicationContext()));
+                alamat2.setText(alamatS);
 
             }
         });

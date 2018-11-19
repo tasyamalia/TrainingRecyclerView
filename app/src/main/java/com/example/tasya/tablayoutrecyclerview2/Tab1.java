@@ -18,7 +18,10 @@ import com.example.tasya.tablayoutrecyclerview2.rest.CategoriesInterface;
 import com.example.tasya.tablayoutrecyclerview2.rest.LatestInterface;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +40,8 @@ public class Tab1 extends Fragment {
     LatestInterface latestInterface;
     Call<LatestItems> latestItemCall;
     MealsItems[] mealsItem;
-
+    RealmHelper realmHelper;
+    Realm realm;
 
 
     @Override
@@ -51,6 +55,10 @@ public class Tab1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.tab1, container, false);
 
+
+        RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+        realm = Realm.getInstance(configuration);
+        realmHelper = new RealmHelper(realm);
 
         recyclerView2 = view.findViewById(R.id.recyclerView2);
         recyclerView3 = view.findViewById(R.id.recyclerView3);
@@ -78,12 +86,13 @@ public class Tab1 extends Fragment {
             public void onResponse(Call<CategoriesItems> call, Response<CategoriesItems> response) {
                 categoriItems = response.body().getCategoriItems();
 
+                List<Add> adds = realmHelper.getAllAdd();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                 recyclerView2.setLayoutManager(layoutManager);
-                mAdapter = new FoodAdapter(categoriItems, getContext());
+                mAdapter = new FoodAdapter(categoriItems, getContext(), adds);
                 recyclerView2.setAdapter(mAdapter);
 
-                mAdapter.notifyDataSetChanged();
+                //mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -102,7 +111,7 @@ public class Tab1 extends Fragment {
                 vAdapter = new DrinkAdapter(mealsItem, getContext());
                 recyclerView3.setAdapter(vAdapter);
 
-                mAdapter.notifyDataSetChanged();
+                //mAdapter.notifyDataSetChanged();
             }
 
             @Override
